@@ -1,5 +1,4 @@
 import React from 'react';
-import { taskData } from '../data/data';
 import Task from './Task';
 
 export interface TaskProps {
@@ -11,13 +10,20 @@ export interface TaskProps {
 
 export interface TasksProps {
   task: TaskProps[];
+  onDelete(id: number): void;
+  onToggle(id: number): void;
 }
 
-const Tasks: React.FC<TasksProps> = () => {
+const Tasks: React.FC<TasksProps> = ({ onDelete, task, onToggle }) => {
   return (
     <>
-      {taskData.map((task) => (
-        <Task key={task.id} task={task} />
+      {task.map((task) => (
+        <Task
+          key={task.id}
+          task={task}
+          onDelete={onDelete}
+          onToggle={onToggle}
+        />
       ))}
     </>
   );

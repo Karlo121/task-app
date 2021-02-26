@@ -5,4 +5,5 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  color: #2c2f33;
 `;
