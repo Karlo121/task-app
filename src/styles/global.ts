@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
@@ -15,7 +16,7 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 600px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
@@ -34,4 +35,9 @@ footer {
   text-align: center;
 }
 
+`;
+
+export const StyledH2 = styled.h2`
+  text-align: center;
+  color: #2c2f33;
 `;

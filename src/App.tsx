@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Tasks, { TaskProps } from './components/Tasks';
-import GlobalStyle from './styles/global';
+import GlobalStyle, { StyledH2 } from './styles/global';
 import { taskData } from './data/data';
 import AddTask from './components/AddTask';
 
@@ -17,7 +17,6 @@ const App: React.FC = () => {
 
   const deleteTask = (id: number): void => {
     setTasks(tasks.filter((task) => id !== task.id));
-    console.log(tasks);
   };
 
   const toggleReminder = (id: number): void => {
@@ -42,7 +41,7 @@ const App: React.FC = () => {
       {tasks.length > 0 ? (
         <Tasks task={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
-        'No tasks to show'
+        <StyledH2>No tasks to show</StyledH2>
       )}
     </div>
   );

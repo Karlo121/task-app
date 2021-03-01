@@ -6,4 +6,8 @@ export const StyledHeader = styled.header`
   align-items: center;
   margin-bottom: 20px;
   color: #2c2f33;
+
+  h2 {
+    color: red;
+  }
 `;
