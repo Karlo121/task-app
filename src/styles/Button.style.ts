@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   background: #2c2f33;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 10px 15px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -16,8 +16,9 @@ export const StyledButton = styled.button`
   &:focus {
     outline: none;
   }
-
   :active {
     transform: scale(0.98);
   }
+
+  background: ${(props) => props.theme.main};
 `;

@@ -7,6 +7,7 @@ import AddTask from './components/AddTask';
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState(taskData);
+  const [showForm, setShowForm] = useState(false);
 
   const addTask = (task: TaskProps): void => {
     const id = Math.floor(Math.random() * 10000 + 1);
@@ -30,8 +31,14 @@ const App: React.FC = () => {
   return (
     <div className='container'>
       <GlobalStyle />
-      <Header title='Task App' />
-      <AddTask onAdd={addTask} />
+      <Header
+        title='Task App'
+        onAdd={() => {
+          setShowForm(!showForm);
+        }}
+        showForm={showForm}
+      />
+      {showForm && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks task={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
       ) : (
