@@ -43,7 +43,7 @@ const AddTask: React.FC<AddTaskProps> = (props: AddTaskProps) => {
         />
       </StyledFormControl>
       <StyledFormControl>
-        <label>Day & TIme</label>
+        <label>Day & Time</label>
         <input
           type='text'
           placeholder='Add Day & Time'
