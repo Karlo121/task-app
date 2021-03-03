@@ -17,13 +17,8 @@ export interface TasksProps {
 const Tasks: React.FC<TasksProps> = ({ onDelete, task, onToggle }) => {
   return (
     <>
-      {task.map((task) => (
-        <Task
-          key={task.id}
-          task={task}
-          onDelete={onDelete}
-          onToggle={onToggle}
-        />
+      {task.map((task, index) => (
+        <Task key={index} task={task} onDelete={onDelete} onToggle={onToggle} />
       ))}
     </>
   );
