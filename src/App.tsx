@@ -1,9 +1,8 @@
-import React, { useState, useEffect, SetStateAction } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Tasks, { TaskProps } from './components/Tasks';
 import GlobalStyle, { StyledH2 } from './styles/global';
 import { taskData } from './data/data';
-
 import AddTask from './components/AddTask';
 
 const App: React.FC = () => {
@@ -25,6 +24,13 @@ const App: React.FC = () => {
     return data;
   };
 
+  const fetchTask = async (id: number) => {
+    const r = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data = await r.json();
+
+    return data;
+  };
+
   const addTask = async (task: TaskProps) => {
     const r = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
@@ -41,10 +47,21 @@ const App: React.FC = () => {
     setTasks(tasks.filter((task) => id !== task.id));
   };
 
-  const toggleReminder = (id: number): void => {
+  const toggleReminder = async (id: number) => {
+    const taskToToggle = await fetchTask(id);
+    const newTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
+
+    const r = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(newTask),
+    });
+
+    const data = await r.json();
+
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
   };
